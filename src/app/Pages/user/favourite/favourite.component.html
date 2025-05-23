@@ -1,0 +1,29 @@
+<div class="container mt-4">
+  <h2>My Favorite Rooms</h2>
+
+  <div class="row">
+    <div class="col-md-4" *ngFor="let fav of favorites">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Room Number: {{ fav.roomNumber }}</h5>
+          <p class="card-text">Type: {{ fav.roomTypeName }}</p>
+          <p class="card-text">
+            Status: {{ fav.status === 1 ? "Available" : "Not Available" }}
+          </p>
+          <a
+            [routerLink]="['/user/room', fav.roomId]"
+            class="btn btn-primary me-2"
+          >
+            Details
+          </a>
+          <button
+            (click)="removeFromFavorites(fav.roomId)"
+            class="btn btn-danger"
+          >
+            Remove
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

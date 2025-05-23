@@ -1,0 +1,45 @@
+<div class="container mt-4">
+  <h2>Available Rooms</h2>
+  <div class="mb-3">
+    <button class="btn btn-info" (click)="goToMyReservations()">
+      My Reservations
+    </button>
+  </div>
+  <button class="btn btn-success mb-3" (click)="loadAvailableRooms()">
+    Show Available Only
+  </button>
+  <button class="btn btn-secondary mb-3 ms-2" (click)="loadAllRooms()">
+    Show All Rooms
+  </button>
+
+  <div class="row">
+    <div class="col-md-4" *ngFor="let room of rooms">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Room Number: {{ room.roomNumber }}</h5>
+          <p class="card-text">Type: {{ room.roomTypeName }}</p>
+          <p class="card-text">
+            Status: {{ room.status === 0 ? "Available" : "Not Available" }}
+          </p>
+
+          <div class="d-flex justify-content-between">
+            <a
+              [routerLink]="['/user/room', room.roomId]"
+              class="btn btn-primary"
+              >Details</a
+            >
+            <button
+              class="btn btn-success ms-2"
+              (click)="goToReserve(room.roomId)"
+            >
+              Reserve
+            </button>
+            <button class="btn btn-light" (click)="addToFavorite(room.roomId)">
+              <i class="fa fa-heart text-danger"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

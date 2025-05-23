@@ -1,0 +1,162 @@
+/* إعداد الجسم لتوسيط الكونتينر */
+body, html {
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* صندوق الكونتينر */
+.register-container {
+  margin: auto;
+  width: 380px;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 30px 30px 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  text-align: center;
+}
+
+/* عنوان الفورم */
+.register-container h2 {
+  margin-bottom: 25px;
+  font-weight: 700;
+  font-size: 30px;
+  color: #fff;
+}
+
+/* مجموعة الحقول */
+.input-group {
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+/* لابل الحقول */
+.input-group label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #d3d3d3;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* حاوية الأيقونة مع الانبوت */
+.input-icon-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #da58df;
+  border-radius: 12px;
+  padding: 10px 12px;
+  background-color: #fefefe;
+  transition: border-color 0.3s ease;
+}
+
+/* تأثير التركيز */
+.input-icon-wrapper input:focus {
+  outline: none;
+  border-color: #da58df;
+}
+
+/* حدود إذا الحقل صحيح */
+.input-icon-wrapper input.ng-valid.ng-touched {
+  border-color: #da58df;
+  box-shadow: 0 0 8px #da58df;
+}
+
+/* حدود إذا الحقل خاطئ */
+.input-icon-wrapper input.ng-invalid.ng-touched {
+  border-color: #ff6b6b;
+  box-shadow: 0 0 8px #ff6b6b;
+}
+
+/* الأيقونة */
+.input-icon-wrapper .icon {
+  color: #da58df;
+  font-size: 20px;
+  margin-right: 15px;
+  min-width: 20px;
+  text-align: center;
+  pointer-events: none;
+}
+
+/* الانبوت */
+.input-icon-wrapper input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 16px;
+  background-color: transparent;
+  color: #333;
+  padding: 10px 5px;
+}
+
+.input-icon-wrapper input::placeholder {
+  color: #bbb;
+  margin-left: 5px;
+  font-size: 14px;
+}
+
+/* رسائل الخطأ */
+.error {
+  color: #ff6b6b;
+  font-size: 13px;
+  margin-top: 4px;
+  padding-left: 6px;
+}
+
+/* زر الإرسال */
+button {
+  width: 100%;
+  padding: 14px 0;
+  border: none;
+  border-radius: 12px;
+  background: #da58df;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background 0.3s ease, transform 0.2s;
+  margin-top: 15px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  user-select: none;
+}
+
+/* زر معطل (مخفي) */
+button:disabled {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* تأثير الهور على الزر */
+button:hover:not(:disabled) {
+  background: #b93fd1;
+  transform: translateY(-2px);
+}
+
+/* رسالة الخطأ العامة */
+.error-message {
+  margin-top: 15px;
+  color: #ff6b6b;
+  font-weight: 600;
+  text-align: left;
+}
+
+/* قائمة رسائل الأخطاء */
+.alert {
+  background-color: rgba(255, 107, 107, 0.1);
+  border: 1px solid #ff6b6b;
+  border-radius: 10px;
+  padding: 10px 15px;
+  color: #ff6b6b;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: left;
+}

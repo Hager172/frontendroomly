@@ -1,0 +1,242 @@
+<h2>Reservations List</h2>
+
+<button class="btn btn-primary mb-3" (click)="openAddModal()">
+  Add New Reservation
+</button>
+
+<div
+  *ngIf="errorMessage"
+  class="alert alert-danger mt-3"
+  style="white-space: pre-line"
+>
+  {{ errorMessage }}
+</div>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Check-In Date</th>
+      <th>Check-Out Date</th>
+      <th>Room Number</th>
+      <th>User Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let reservation of reservations">
+      <td>{{ reservation.checkInDate | date : "mediumDate" }}</td>
+      <td>{{ reservation.checkOutDate | date : "mediumDate" }}</td>
+      <td>{{ reservation.roomNumber }}</td>
+      <td>{{ reservation.userName }}</td>
+      <td>
+        <button
+          class="btn btn-warning btn-sm me-2"
+          (click)="openEditModal(reservation)"
+        >
+          Edit
+        </button>
+        <button
+          class="btn btn-danger btn-sm"
+          (click)="deleteReservation(reservation.resevationId)"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Add Reservation Modal -->
+<div
+  class="modal fade"
+  id="addReservationModal"
+  tabindex="-1"
+  aria-labelledby="addReservationModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <form (ngSubmit)="onSubmitAdd()" #addForm="ngForm" class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addReservationModalLabel">
+          Add Reservation
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="addCheckIn" class="form-label">Check-In Date</label>
+          <input
+            type="date"
+            id="addCheckIn"
+            name="checkInDate"
+            class="form-control"
+            [(ngModel)]="newReservation.checkInDate"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="addCheckOut" class="form-label">Check-Out Date</label>
+          <input
+            type="date"
+            id="addCheckOut"
+            name="checkOutDate"
+            class="form-control"
+            [(ngModel)]="newReservation.checkOutDate"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="addRoomId" class="form-label">Room ID</label>
+          <input
+            type="number"
+            id="addRoomId"
+            name="roomId"
+            class="form-control"
+            [(ngModel)]="newReservation.roomId"
+            required
+            min="1"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="addUserId" class="form-label">User ID</label>
+          <input
+            type="text"
+            id="addUserId"
+            name="userId"
+            class="form-control"
+            [(ngModel)]="newReservation.userId"
+            required
+          />
+        </div>
+
+        <div
+          *ngIf="errorMessage"
+          class="alert alert-danger"
+          style="white-space: pre-line"
+        >
+          {{ errorMessage }}
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="submit"
+          [disabled]="addForm.invalid"
+          class="btn btn-primary"
+        >
+          Add
+        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Edit Reservation Modal -->
+<div
+  class="modal fade"
+  id="editReservationModal"
+  tabindex="-1"
+  aria-labelledby="editReservationModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <form
+      (ngSubmit)="onSubmitEdit()"
+      #editForm="ngForm"
+      class="modal-content"
+      *ngIf="editReservation"
+    >
+      <div class="modal-header">
+        <h5 class="modal-title" id="editReservationModalLabel">
+          Edit Reservation
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="editCheckIn" class="form-label">Check-In Date</label>
+          <input
+            type="date"
+            id="editCheckIn"
+            name="checkInDate"
+            class="form-control"
+            [(ngModel)]="editReservation.checkInDate"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="editCheckOut" class="form-label">Check-Out Date</label>
+          <input
+            type="date"
+            id="editCheckOut"
+            name="checkOutDate"
+            class="form-control"
+            [(ngModel)]="editReservation.checkOutDate"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="editRoomId" class="form-label">Room ID</label>
+          <input
+            type="number"
+            id="editRoomId"
+            name="roomId"
+            class="form-control"
+            [(ngModel)]="editReservation.roomId"
+            required
+            min="1"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="editUserId" class="form-label">User ID</label>
+          <input
+            type="text"
+            id="editUserId"
+            name="userId"
+            class="form-control"
+            [(ngModel)]="editReservation.userId"
+            required
+          />
+        </div>
+
+        <div
+          *ngIf="errorMessage"
+          class="alert alert-danger"
+          style="white-space: pre-line"
+        >
+          {{ errorMessage }}
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="submit"
+          [disabled]="editForm.invalid"
+          class="btn btn-primary"
+        >
+          Save Changes
+        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

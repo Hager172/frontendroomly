@@ -1,0 +1,214 @@
+<h2>Room Types List</h2>
+
+<button class="btn btn-primary mb-3" (click)="openAddModal()">
+  Add New Room Type
+</button>
+
+<div
+  *ngIf="errorMessage"
+  class="alert alert-danger mt-3"
+  style="white-space: pre-line"
+>
+  {{ errorMessage }}
+</div>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let roomType of roomTypes">
+      <td>{{ roomType.name }}</td>
+      <td>{{ roomType.description }}</td>
+      <td>{{ roomType.price | currency : "USD" }}</td>
+      <td>
+        <button
+          class="btn btn-warning btn-sm me-2"
+          (click)="openEditModal(roomType)"
+        >
+          Edit
+        </button>
+        <button
+          class="btn btn-danger btn-sm"
+          (click)="deleteRoomType(roomType.roomTypeId)"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Add Room Type Modal -->
+<div
+  class="modal fade"
+  id="addRoomTypeModal"
+  tabindex="-1"
+  aria-labelledby="addRoomTypeModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <form (ngSubmit)="onSubmitAdd()" #addForm="ngForm" class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addRoomTypeModalLabel">Add Room Type</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="addName" class="form-label">Name</label>
+          <input
+            type="text"
+            id="addName"
+            name="name"
+            class="form-control"
+            [(ngModel)]="newRoomType.name"
+            required
+            maxlength="50"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="addDescription" class="form-label">Description</label>
+          <textarea
+            id="addDescription"
+            name="description"
+            class="form-control"
+            [(ngModel)]="newRoomType.description"
+            maxlength="200"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label for="addPrice" class="form-label">Price</label>
+          <input
+            type="number"
+            id="addPrice"
+            name="price"
+            class="form-control"
+            [(ngModel)]="newRoomType.price"
+            required
+            min="0"
+            step="0.01"
+          />
+        </div>
+
+        <div
+          *ngIf="errorMessage"
+          class="alert alert-danger"
+          style="white-space: pre-line"
+        >
+          {{ errorMessage }}
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="submit"
+          [disabled]="addForm.invalid"
+          class="btn btn-primary"
+        >
+          Add
+        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Edit Room Type Modal -->
+<div
+  class="modal fade"
+  id="editRoomTypeModal"
+  tabindex="-1"
+  aria-labelledby="editRoomTypeModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <form
+      (ngSubmit)="onSubmitEdit()"
+      #editForm="ngForm"
+      class="modal-content"
+      *ngIf="editRoomType"
+    >
+      <div class="modal-header">
+        <h5 class="modal-title" id="editRoomTypeModalLabel">Edit Room Type</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="editName" class="form-label">Name</label>
+          <input
+            type="text"
+            id="editName"
+            name="name"
+            class="form-control"
+            [(ngModel)]="editRoomType.name"
+            required
+            maxlength="50"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="editDescription" class="form-label">Description</label>
+          <textarea
+            id="editDescription"
+            name="description"
+            class="form-control"
+            [(ngModel)]="editRoomType.description"
+            maxlength="200"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label for="editPrice" class="form-label">Price</label>
+          <input
+            type="number"
+            id="editPrice"
+            name="price"
+            class="form-control"
+            [(ngModel)]="editRoomType.price"
+            required
+            min="0"
+            step="0.01"
+          />
+        </div>
+
+        <div
+          *ngIf="errorMessage"
+          class="alert alert-danger"
+          style="white-space: pre-line"
+        >
+          {{ errorMessage }}
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="submit"
+          [disabled]="editForm.invalid"
+          class="btn btn-primary"
+        >
+          Save Changes
+        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

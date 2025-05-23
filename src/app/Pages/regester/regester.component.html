@@ -1,0 +1,110 @@
+<div class="register-container my-5">
+  <h2>Register</h2>
+  <form (ngSubmit)="regester()" #registerForm="ngForm" novalidate>
+    <div class="input-group">
+      <div class="input-icon-wrapper">
+        <i class="fa-solid fa-user icon"></i>
+        <input
+          id="fullName"
+          type="text"
+          [(ngModel)]="fullName"
+          name="fullName"
+          placeholder="Enter full name"
+          required
+          #fullNameInput="ngModel"
+        />
+      </div>
+      <div class="error" *ngIf="fullNameInput.invalid && fullNameInput.touched">
+        Full Name is required.
+      </div>
+    </div>
+
+    <div class="input-group">
+      <div class="input-icon-wrapper">
+        <i class="fa-solid fa-envelope icon"></i>
+        <input
+          id="email"
+          type="email"
+          [(ngModel)]="email"
+          name="email"
+          placeholder="Enter email"
+          required
+          #emailInput="ngModel"
+        />
+      </div>
+      <div class="error" *ngIf="emailInput.invalid && emailInput.touched">
+        Email is required and must be valid.
+      </div>
+    </div>
+
+    <div class="input-group">
+      <div class="input-icon-wrapper">
+        <i class="fa-solid fa-phone icon"></i>
+        <input
+          id="phoneNumber"
+          type="tel"
+          [(ngModel)]="phoneNumber"
+          name="phoneNumber"
+          placeholder="Enter phone number"
+          required
+          #phoneInput="ngModel"
+        />
+      </div>
+      <div class="error" *ngIf="phoneInput.invalid && phoneInput.touched">
+        Phone Number is required.
+      </div>
+    </div>
+
+    <div class="input-group">
+      <div class="input-icon-wrapper">
+        <i class="fa-solid fa-location-dot icon"></i>
+        <input
+          id="address"
+          type="text"
+          [(ngModel)]="address"
+          name="address"
+          placeholder="Enter address"
+          required
+          #addressInput="ngModel"
+        />
+      </div>
+      <div class="error" *ngIf="addressInput.invalid && addressInput.touched">
+        Address is required.
+      </div>
+    </div>
+
+    <div class="input-group">
+      <div class="input-icon-wrapper">
+        <i class="fa-solid fa-lock icon"></i>
+        <input
+          id="password"
+          type="password"
+          [(ngModel)]="password"
+          name="password"
+          placeholder="Password"
+          required
+          minlength="6"
+          #passwordInput="ngModel"
+        />
+      </div>
+      <div class="error" *ngIf="passwordInput.invalid && passwordInput.touched">
+        Password is required (min 6 characters).
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="registerForm.invalid"
+    >
+      Submit
+    </button>
+
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+    <div *ngIf="errorMessages.length > 0" class="alert alert-danger mt-3">
+      <ul class="mb-0">
+        <li *ngFor="let msg of errorMessages">{{ msg }}</li>
+      </ul>
+    </div>
+  </form>
+</div>

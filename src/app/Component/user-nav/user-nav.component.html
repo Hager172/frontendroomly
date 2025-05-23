@@ -1,0 +1,106 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+
+<!-- Navbar -->
+<div
+  class="navbar"
+  style="overflow: hidden; background-color: #333; white-space: nowrap"
+>
+  <div class="row">
+    <!-- Links for User -->
+    <ng-container *ngIf="role === 'User'">
+      <a
+        routerLink="home"
+        routerLinkActive="active"
+        style="
+          float: left;
+          padding: 14px 16px;
+          color: white;
+          text-decoration: none;
+        "
+        class="col-3 m-2"
+      >
+        <i class="fa fa-fw fa-home"></i> Home
+      </a>
+      <a
+        routerLink="/user/rooms"
+        routerLinkActive="active"
+        style="
+          float: left;
+          padding: 14px 16px;
+          color: white;
+          text-decoration: none;
+        "
+        class="col-3 m-2"
+      >
+        <i class="fa fa-fw fa-bed"></i> Rooms
+      </a>
+      <a
+        routerLink="/user/favourite"
+        routerLinkActive="active"
+        style="padding: 14px 16px; color: white; text-decoration: none"
+        class="col-3 m-2"
+      >
+        <i class="fa fa-fw fa-heart"></i> Favourite
+      </a>
+    </ng-container>
+
+    <!-- Links for Admin -->
+    <ng-container *ngIf="role === 'Admin'">
+      <a
+        routerLink="user/admin/allusers"
+        routerLinkActive="active"
+        style="
+          float: left;
+          padding: 14px 16px;
+          color: white;
+          text-decoration: none;
+        "
+        class="col-2 m-2"
+      >
+        <i class="fa fa-fw fa-user"></i> Users
+      </a>
+      <a
+        routerLink="user/admin/allrooms"
+        routerLinkActive="active"
+        style="
+          float: left;
+          padding: 14px 16px;
+          color: white;
+          text-decoration: none;
+        "
+        class="col-2 m-2"
+      >
+        <i class="fa fa-fw fa-bed"></i> Rooms
+      </a>
+      <a
+        routerLink="user/admin/alltypes"
+        routerLinkActive="active"
+        style="
+          float: left;
+          padding: 14px 16px;
+          color: white;
+          text-decoration: none;
+        "
+        class="col-2 m-2"
+      >
+        <i class="fa fa-fw fa-list"></i> Room Types
+      </a>
+      <a
+        routerLink="user/admin/reservation"
+        routerLinkActive="active"
+        style="
+          float: left;
+          padding: 14px 16px;
+          color: white;
+          text-decoration: none;
+        "
+        class="col-2 m-2 mx-3"
+      >
+        <i class="fa fa-fw fa-calendar"></i> Reservations
+      </a>
+    </ng-container>
+  </div>
+</div>

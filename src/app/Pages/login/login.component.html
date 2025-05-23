@@ -1,0 +1,45 @@
+<div class="login-container">
+  <h2>Login</h2>
+  <form (ngSubmit)="login()" #loginForm="ngForm" novalidate>
+    <div class="input-group">
+      <div class="input-icon-wrapper">
+        <i class="fa-solid fa-envelope icon"></i>
+        <input
+          id="email"
+          type="email"
+          [(ngModel)]="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+          #emailInput="ngModel"
+        />
+      </div>
+      <div class="error" *ngIf="emailInput.invalid && emailInput.touched">
+        Email is required and must be valid.
+      </div>
+    </div>
+
+    <div class="input-group">
+      <div class="input-icon-wrapper">
+        <i class="fa-solid fa-lock icon"></i>
+        <input
+          id="password"
+          type="password"
+          [(ngModel)]="password"
+          name="password"
+          placeholder="Enter your password"
+          required
+          minlength="6"
+          #passwordInput="ngModel"
+        />
+      </div>
+      <div class="error" *ngIf="passwordInput.invalid && passwordInput.touched">
+        Password is required (min 6 characters).
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="loginForm.invalid">Login</button>
+
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+  </form>
+</div>

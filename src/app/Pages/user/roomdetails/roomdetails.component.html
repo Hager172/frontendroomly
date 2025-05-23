@@ -1,0 +1,32 @@
+<div class="container mt-4">
+  <h2>Room Details</h2>
+
+  <div *ngIf="roomDetails; else loading">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Room Number: {{ roomDetails.roomNumber }}</h5>
+        <p class="card-text">Type: {{ roomDetails.roomTypeName }}</p>
+        <p class="card-text">
+          Status:
+          <span
+            [ngClass]="
+              roomDetails.status === 1 ? 'text-success' : 'text-danger'
+            "
+          >
+            {{ roomDetails.status === 1 ? "Available" : "Not Available" }}
+          </span>
+        </p>
+        <p class="card-text">Room ID: {{ roomDetails.roomId }}</p>
+        <p class="card-text">Room Type ID: {{ roomDetails.roomTypeId }}</p>
+
+        <a routerLink="/user/rooms" class="btn btn-secondary mt-3"
+          >Back to Rooms</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <ng-template #loading>
+    <p>Loading room details...</p>
+  </ng-template>
+</div>

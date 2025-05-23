@@ -1,0 +1,134 @@
+.login-container {
+  width: 320px;
+  margin: 80px auto;
+  padding: 30px 25px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-bottom: 25px;
+  font-weight: 600;
+  font-size: 28px;
+  color: #fff;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 12px;
+  background: #f0f0f0; /* خلفية فاتحة جداً */
+  color: #333333; /* لون خط داكن */
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+.input-group input::placeholder {
+  color: #999999; /* لون placeholder خفيف */
+}
+
+.input-group input:focus {
+  background: #e0e0e0;
+  outline: 2px solid #007bff; /* إطار أزرق عند التركيز */
+}
+
+
+.input-group input::placeholder {
+  color: rgba(67, 61, 61, 0.7);
+  margin-left: 10px;
+}
+
+.input-group input:focus {
+  background: rgba(255, 255, 255, 0.3);
+  outline: none;
+}
+
+.error {
+  color: #ff6b6b;
+  font-size: 13px;
+  text-align: left;
+  margin-top: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(200, 7, 207, 0.674);
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+button:disabled {
+  background: rgba(255, 255, 255, 0.15);
+  cursor: not-allowed;
+}
+.input-icon-wrapper .icon {
+  position: absolute;
+  left: 12px;
+  color: #da58df; /* لون الأيقونة اللي طلبته */
+  font-size: 18px;
+  pointer-events: none;
+}
+
+button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+.input-group label {
+  margin-bottom: 6px;
+  font-weight: 600;
+
+  font-size: 14px;
+  color: #786f6f;
+}
+
+.error-message {
+  margin-top: 15px;
+  color: #ff6b6b;
+  font-weight: 600;
+}
+.input-icon-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #da58df;
+  border-radius: 8px;
+  padding: 8px 12px;
+  background-color: #fefefe;
+}
+
+.input-icon-wrapper .icon {
+  color: #da58df;
+  font-size: 18px;
+  margin-right: 25px;
+  min-width: 20px;
+  text-align: center;
+}
+
+.input-icon-wrapper input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 18px;
+  background-color: transparent;
+  color: #333;
+}
+
+.input-icon-wrapper input::placeholder {
+  color: #bbb;
+  margin-left: 10px;
+}

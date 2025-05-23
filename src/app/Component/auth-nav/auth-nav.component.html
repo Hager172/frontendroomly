@@ -1,0 +1,45 @@
+<nav class="custom-navbar">
+  <p>
+    <a href="http://localhost:4200/login" class="nav-button">login</a>
+    <a href="http://localhost:4200/regester" class="nav-button">regester</a>
+  </p>
+</nav>
+
+<style>
+  .custom-navbar {
+    background-color: #da58df;
+    padding: 10px 20px;
+    text-align: center;
+  }
+
+  .custom-navbar p {
+    margin: 0;
+  }
+
+  .nav-button {
+    display: inline-block;
+    background-color: white;
+    color: #da58df;
+    padding: 10px 25px;
+    margin: 0 10px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 4px 10px rgba(218, 88, 223, 0.4);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s;
+    user-select: none;
+  }
+
+  .nav-button:hover {
+    background-color: #da58df;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(218, 88, 223, 0.7);
+  }
+
+  .nav-button:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 8px rgba(218, 88, 223, 0.5);
+  }
+</style>
